@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+#Permet de récupérer le nom du commit et de vérifier s'il existe la [ref: x] dedans
+
+regex = /.*(\[ref: [0-9]+\]).*/
+
+commitFile = ARGV[0]
+contentCommitFile = File.read(commitFile)
+
+if !regex.match(contentCommitFile)
+  puts "Le nom du commit ne contient pas de reference !"
+  exit 1
+end
